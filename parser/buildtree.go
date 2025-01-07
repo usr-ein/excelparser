@@ -5,13 +5,15 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/pkg/errors"
 	"github.com/usr-ein/excelparser/parser/shuntingyard"
 	"github.com/usr-ein/excelparser/xl"
-	"github.com/pkg/errors"
 )
 
 type ShuntingYard = shuntingyard.ShuntingYardState[Node]
 
+// PrecedenceMap is a map of binary operators to their precedence.
+// It lets us know which operators should be evaluated first.
 var PrecedenceMap = map[string]int{
 	// cell range union and intersect
 	" ": 8,
@@ -35,6 +37,7 @@ var PrecedenceMap = map[string]int{
 	"<":  1,
 }
 
+// IsCommutative is a map of binary operators to whether they are commutative.
 // True if A OP B == B OP A
 // False if A OP B != B OP A
 var IsCommutative = map[string]bool{
@@ -60,6 +63,10 @@ var IsCommutative = map[string]bool{
 	"<":  false,
 }
 
+// BuildTree takes a slice of tokens and returns a Node representing
+// the formula root.
+// The context parameter is used to resolve relative cell references,
+// and contains the current sheet name, and other context information necessary.
 func BuildTree(ctx Context, tokens []Token) (Node, error) {
 	// named parseFormula in original
 	stream := NewTokenStream(tokens)

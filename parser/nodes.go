@@ -6,6 +6,8 @@ import (
 	"strconv"
 )
 
+// Node is the interface that all nodes in the AST implement.
+// It represent a node such as a SUM function, a cell reference, a + binary expression, etc.
 type Node interface {
 	Type() NodeType
 	IsEq(Node) bool

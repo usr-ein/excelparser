@@ -2,6 +2,8 @@ package parser
 
 import "github.com/xuri/efp"
 
+// Tokenizes a formula string into a slice of tokens,
+// for later parsing into a tree.
 func Tokenize(formula string) []Token {
 	parser := efp.ExcelParser()
 	rawTokens := parser.Parse(formula)
