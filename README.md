@@ -8,6 +8,98 @@ I was trying to parse Excel formulas into ASTs to process them further, but no G
 2. I then added unit tests and end to end tests on everything.
 3. Finally, I removed/refactored shitty looking code until I was pleased with the structure.
 
+## What you get using this repo
+
+Here is an example of the kind of data structure you get by using this lib:
+
+```go
+import (
+    "fmt"
+    "github.com/usr-ein/excelparser/parser"
+)
+// Node is the interface that all nodes in the AST implement.
+// It represent a node such as a SUM function, a cell reference, a + binary expression, etc.
+type Node interface {
+	Type() NodeType
+	IsEq(Node) bool
+	Children() []Node
+}
+
+type NodeType uint8
+
+const (
+	NodeTypeCell NodeType = iota
+	NodeTypeCellRange
+	NodeTypeFunction
+	NodeTypeBinaryExpression
+	NodeTypeUnaryExpression
+	NodeTypeNumber
+	NodeTypeText
+	NodeTypeLogical
+)
+
+
+func main(){
+    node, err := parser.Parse(`(SUM(A1:B1, A2:B2)+A5+3232-A15)/B90/321.0+MONTH("January")`, `Sheet1`)
+    if err != nil {
+        panic(err)
+    }
+    fmt.Printf("%+v\n", n)
+    // The large formula is broken down into nodes with fields like left/right/operator etc.
+    /**
+    {
+        Operator:+
+        Left:{
+            Operator:/ 
+            Left:{
+                Operator:/ 
+                Left:{
+                    Operator:- 
+                    Left:{
+                        Operator:+ 
+                        Left:{
+                            Operator:+ 
+                            Left:{
+                                Name:SUM 
+                                Arguments:[
+                                    {
+                                        Start:
+                                            {Cell:{Sheet:Sheet1 Row:0 Col:0 RowRel:true ColRel:true}} 
+                                        End:{Cell:{Sheet:Sheet1 Row:1 Col:2 RowRel:true ColRel:true}}
+                                    }
+                                    {
+                                        Start:
+                                            {Cell:{Sheet:Sheet1 Row:1 Col:0 RowRel:true ColRel:true}}
+                                        End:{Cell:{Sheet:Sheet1 Row:2 Col:2 RowRel:true ColRel:true}}
+                                    }
+                                ]
+                            }
+                            Right:{
+                                Cell:{Sheet:Sheet1 Row:4 Col:0 RowRel:true ColRel:true}
+                            }
+                        }
+                        Right:3232
+                    }
+                    Right:{
+                        Cell:{Sheet:Sheet1 Row:14 Col:0 RowRel:true ColRel:true}
+                    }
+                }
+                Right:{
+                    Cell:{Sheet:Sheet1 Row:89 Col:1 RowRel:true ColRel:true}
+                }
+            }
+            Right:321
+        }
+        Right: {
+            Name:MONTH
+            Arguments:["January"]
+        }
+    }
+    */
+}
+
+```
+
 ## Other Excel/Go libraries
 
 I found the following other useful repos:
