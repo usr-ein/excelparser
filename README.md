@@ -105,6 +105,6 @@ func main(){
 I found the following other useful repos:
 
 - [xuri/xfp](https://github.com/xuri/efp) I use this to tokenize formulas here. From the doc, it claims to "*get an Abstract Syntax Tree (AST) from Excel formula*", but this is wrong, and all it does is pretty print the list of tokens.
-- E. W. Bachtal's Excel formula parser, see the [/bachtal folder](bachtal/)
+- E. W. Bachtal's Excel formula parser, see the [/_docs/bachtal folder](_docs/bachtal/)
 - The excelent [qax-os/excelize](https://github.com/qax-os/excelize). Great library for general Excel things, but not so much for formula manipulation
 - [tealeg/xlsx](https://github.com/tealeg/xlsx) gave me a few headaches, but overall good library. Some limitation regarding styling of cells though, and underdocumented in many places, but higher level than excelize.
