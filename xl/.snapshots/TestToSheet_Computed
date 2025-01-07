@@ -1,0 +1,41 @@
+(xl.Sheet) {
+  Name: (string) (len=6) "Sheet1",
+  Content: ([][]xl.CVal) (len=3) {
+    ([]xl.CVal) (len=10) {
+      (xl.CVal) 0,
+      (xl.CVal) 1,
+      (xl.CVal) 999999984306749440,
+      (xl.CVal) 3,
+      (xl.CVal) 4,
+      (xl.CVal) 5,
+      (xl.CVal) 6,
+      (xl.CVal) 7,
+      (xl.CVal) 8,
+      (xl.CVal) =SUM(A1:I1) -> 42
+    },
+    ([]xl.CVal) (len=10) {
+      (xl.CVal) 11,
+      (xl.CVal) 12,
+      (xl.CVal) nil,
+      (xl.CVal) 14,
+      (xl.CVal) 15,
+      (xl.CVal) 16,
+      (xl.CVal) 17,
+      (xl.CVal) 18,
+      (xl.CVal) 19,
+      (xl.CVal) =
+    },
+    ([]xl.CVal) (len=10) {
+      (xl.CVal) =SUM(A1:A2) -> 42,
+      (xl.CVal) =SUM(B1:B2) -> 42,
+      (xl.CVal) =SUM(C1:C2) -> 42,
+      (xl.CVal) =SUM(D1:D2) -> 42,
+      (xl.CVal) =SUM(E1:E2) -> 42,
+      (xl.CVal) =SUM(F1:F2) -> 42,
+      (xl.CVal) =SUM(G1:G2) -> 42,
+      (xl.CVal) =SUM(H1:H2) -> 42,
+      (xl.CVal) =SUM(I1:I2) -> 42,
+      (xl.CVal) =SUM(J1:J2) -> 42
+    }
+  }
+}

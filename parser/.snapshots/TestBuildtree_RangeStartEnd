@@ -1,0 +1,25 @@
+(parser.FunctionNode) {
+  Name: (string) (len=3) "SUM",
+  Arguments: ([]parser.Node) (len=1) {
+    (parser.CellRangeNode) {
+      Start: (parser.CellNode) {
+        Cell: (xl.Cell) {
+          Sheet: (string) (len=6) "Sheet2",
+          Row: (uint32) 0,
+          Col: (uint16) 0,
+          RowRel: (bool) true,
+          ColRel: (bool) true
+        }
+      },
+      End: (parser.CellNode) {
+        Cell: (xl.Cell) {
+          Sheet: (string) (len=6) "Sheet2",
+          Row: (uint32) 5,
+          Col: (uint16) 1,
+          RowRel: (bool) true,
+          ColRel: (bool) true
+        }
+      }
+    }
+  }
+}

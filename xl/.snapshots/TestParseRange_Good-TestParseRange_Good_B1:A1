@@ -1,0 +1,16 @@
+(xl.rangeTest) {
+  Start: (xl.Cell) {
+    Sheet: (string) (len=6) "Sheet1",
+    Row: (uint32) 0,
+    Col: (uint16) 1,
+    RowRel: (bool) true,
+    ColRel: (bool) true
+  },
+  End: (xl.Cell) {
+    Sheet: (string) (len=6) "Sheet1",
+    Row: (uint32) 1,
+    Col: (uint16) 1,
+    RowRel: (bool) true,
+    ColRel: (bool) true
+  }
+}

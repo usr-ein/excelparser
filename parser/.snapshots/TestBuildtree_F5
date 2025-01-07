@@ -1,0 +1,18 @@
+(parser.NodeJSON) {
+  Type: (string) (len=8) "binExp +",
+  Value: ([]parser.NodeJSON) (len=2) {
+    (parser.NodeJSON) {
+      Type: (string) (len=8) "func SUM",
+      Value: ([]parser.NodeJSON) (len=1) {
+        (parser.NodeJSON) {
+          Type: (string) (len=5) "range",
+          Value: (string) (len=12) "Sheet1!A1:A4"
+        }
+      }
+    },
+    (parser.NodeJSON) {
+      Type: (string) (len=3) "num",
+      Value: (string) (len=8) "5.000000"
+    }
+  }
+}
