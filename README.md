@@ -8,6 +8,14 @@ I was trying to parse Excel formulas into ASTs to process them further, but no G
 2. I then added unit tests and end to end tests on everything.
 3. Finally, I removed/refactored shitty looking code until I was pleased with the structure.
 
+## How to get it
+
+```sh
+go get github.com/usr-ein/excelparser
+```
+
+[Doc is available online here.](https://pkg.go.dev/github.com/usr-ein/excelparser@latest#section-readme)
+
 ## What you get using this repo
 
 Here is an example of the kind of data structure you get by using this lib:
