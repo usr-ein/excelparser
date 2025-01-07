@@ -1,6 +1,7 @@
 package xl
 
 import (
+	"strings"
 	"testing"
 
 	"github.com/bradleyjkemp/cupaloy"
@@ -37,7 +38,9 @@ func TestParseRange_Good(t *testing.T) {
 		"Sheet2!A1:Sheet1!B1", // weird but allowed and implicitly fixed to Sheet2!A1:B1
 	}
 	for _, strAddress := range goodAddresses {
-		t.Run("TestParseRange_Good_"+strAddress, func(tt *testing.T) {
+		testName := strings.ReplaceAll(strAddress, ":", "_")
+		testName = strings.ReplaceAll(testName, "!", "_")
+		t.Run("TestParseRange_Good_"+testName, func(tt *testing.T) {
 			cellRange, err := ParseRange(strAddress, "Sheet1")
 			if err != nil {
 				tt.Errorf("ParseRange(%s, \"Sheet1\") failed with %s error", strAddress, err.Error())
